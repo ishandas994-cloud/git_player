@@ -6,10 +6,10 @@ import (
 	"strings"
 	"time"
 
-	"github-player-rating/internal/cache"
-	gh "github-player-rating/internal/github"
-	"github-player-rating/internal/httpx"
-	"github-player-rating/internal/scoring"
+	"github-player-rating/api/internal/cache"
+	gh "github-player-rating/api/internal/github"
+	"github-player-rating/api/internal/httpx"
+	"github-player-rating/api/internal/scoring"
 )
 
 // Handler is the Vercel Go entrypoint for GET /api/player?username=...

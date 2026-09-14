@@ -3,7 +3,7 @@ package scoring
 import (
 	"strings"
 
-	gh "github-player-rating/internal/github"
+	gh "github-player-rating/api/internal/github"
 )
 
 // TechProfile scores (0-1 share of original repos) how strongly a user's repos lean

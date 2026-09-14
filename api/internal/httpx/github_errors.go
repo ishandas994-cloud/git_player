@@ -5,12 +5,13 @@ import (
 	"net/http"
 	"regexp"
 
-	gh "github-player-rating/internal/github"
+	gh "github-player-rating/api/internal/github"
 )
 
 // UsernameRe validates GitHub usernames: alphanumeric + single hyphens, 1-39 chars,
-// can't start/end with a hyphen or contain consecutive hyphens.
-var UsernameRe = regexp.MustCompile(`^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?![-.])){0,38}$`)
+// can't start/end with a hyphen or contain consecutive hyphens. Written without
+// lookaheads because Go's regexp package uses RE2 (no backtracking).
+var UsernameRe = regexp.MustCompile(`^[a-zA-Z0-9]([a-zA-Z0-9]|-[a-zA-Z0-9]){0,38}$`)
 
 // WriteGitHubError translates a github package error into the right HTTP status + body.
 // Centralized here (rather than duplicated per handler file) since Vercel builds each

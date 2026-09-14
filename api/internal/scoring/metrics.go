@@ -4,7 +4,7 @@ import (
 	"sort"
 	"time"
 
-	gh "github-player-rating/internal/github"
+	gh "github-player-rating/api/internal/github"
 )
 
 // Metrics holds every derived number the scoring engine and the UI's "detailed analytics"

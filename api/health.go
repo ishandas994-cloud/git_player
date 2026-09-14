@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github-player-rating/internal/httpx"
+	"github-player-rating/api/internal/httpx"
 )
 
 // Handler is the Vercel Go entrypoint for GET /api/health.
