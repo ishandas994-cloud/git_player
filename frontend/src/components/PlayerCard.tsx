@@ -11,7 +11,6 @@ const tierAccent: Record<string, string> = {
   'Advanced Developer': 'signal',
   'Solid Developer': 'signal',
   'Developing Developer': 'signal',
-  'Beginner Developer': 'muted',
   'Rookie Developer': 'muted',
 }
 
