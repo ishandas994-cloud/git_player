@@ -2,17 +2,7 @@
   "buildCommand": "cd api && npm install && npm run build && cd ../frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
   "installCommand": "echo skip-root-install",
-  "functions": {
-    "api/index.ts": {
-      "memory": 512,
-      "maxDuration": 15
-    }
-  },
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/index.ts"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
