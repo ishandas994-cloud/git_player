@@ -1,5 +1,5 @@
-import * as normalize from "./normalize";
-import { Metrics } from "./metrics";
+import * as normalize from "./normalize.js";
+import { Metrics } from "./metrics.js";
 
 export interface CategoryScores {
   Activity: number;

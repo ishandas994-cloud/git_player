@@ -1,5 +1,5 @@
-import { Metrics } from "./metrics";
-import { CategoryScores } from "./categories";
+import { Metrics } from "./metrics.js";
+import { CategoryScores } from "./categories.js";
 
 export interface Insights {
   strengths: string[];

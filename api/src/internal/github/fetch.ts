@@ -1,5 +1,5 @@
-import { GitHubClient } from "./client";
-import { Snapshot } from "./types";
+import { GitHubClient } from "./client.js";
+import { Snapshot } from "./types.js";
 
 const readmeCheckCap = 4;
 
@@ -9,23 +9,34 @@ export async function fetchSnapshot(client: GitHubClient, username: string): Pro
   let events: import("./types").GitHubEvent[] = [];
   let contributions: import("./types").ContributionsCollection;
 
+  console.log(`[fetchSnapshot] Fetching profile for ${username}`);
   profile = await client.getProfile(username);
+  console.log(`[fetchSnapshot] Profile fetched for ${username}`);
 
   try {
+    console.log(`[fetchSnapshot] Fetching repos for ${username}`);
     repos = await client.getRepos(username);
-  } catch {
+    console.log(`[fetchSnapshot] Repos fetched for ${username}: ${repos.length} repos`);
+  } catch (e) {
+    console.error(`[fetchSnapshot] Repos error for ${username}:`, e);
     // repos error is not fatal
   }
 
   try {
+    console.log(`[fetchSnapshot] Fetching events for ${username}`);
     events = await client.getPublicEvents(username);
-  } catch {
+    console.log(`[fetchSnapshot] Events fetched for ${username}: ${events.length} events`);
+  } catch (e) {
+    console.error(`[fetchSnapshot] Events error for ${username}:`, e);
     // events error is not fatal
   }
 
   try {
+    console.log(`[fetchSnapshot] Fetching contributions for ${username}`);
     contributions = await client.getContributions(username);
-  } catch {
+    console.log(`[fetchSnapshot] Contributions fetched for ${username}`);
+  } catch (e) {
+    console.error(`[fetchSnapshot] Contributions error for ${username}:`, e);
     contributions = {
       total_commit_contributions: 0,
       total_issue_contributions: 0,
@@ -36,7 +47,9 @@ export async function fetchSnapshot(client: GitHubClient, username: string): Pro
     };
   }
 
+  console.log(`[fetchSnapshot] Enriching top repos for ${username}`);
   await enrichTopRepos(client, username, repos);
+  console.log(`[fetchSnapshot] Done for ${username}`);
 
   return {
     profile,

@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { handlePreflight, error, json } from "./internal/httpx/respond";
-import { UsernameRe } from "./internal/httpx/github_errors";
-import { Shared, playerKey } from "./internal/cache/cache";
-import { GitHubClient } from "./internal/github/client";
-import { fetchSnapshot } from "./internal/github/fetch";
-import { buildPlayerResult, PlayerResult } from "./internal/scoring/result";
+import { handlePreflight, error, json } from "./internal/httpx/respond.js";
+import { UsernameRe } from "./internal/httpx/github_errors.js";
+import { Shared, playerKey } from "./internal/cache/cache.js";
+import { GitHubClient } from "./internal/github/client.js";
+import { fetchSnapshot } from "./internal/github/fetch.js";
+import { buildPlayerResult, PlayerResult } from "./internal/scoring/result.js";
 
 export interface CompareResult {
   playerA: PlayerResult;

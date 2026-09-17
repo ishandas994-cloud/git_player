@@ -1,12 +1,12 @@
-import { Snapshot } from "../github/types";
-import { Metrics, computeMetrics } from "./metrics";
-import { CategoryScores, computeCategoryScores } from "./categories";
-import * as normalize from "./normalize";
-import { OverallResult, BreakdownItem, computeOverall } from "./overall";
-import { Tier } from "./tier";
-import { Position, assignPosition, detectTechProfile } from "./position";
-import { Attributes, computeAttributes } from "./attributes";
-import { Insights, generateInsights } from "./insights";
+import { Snapshot } from "../github/types.js";
+import { Metrics, computeMetrics } from "./metrics.js";
+import { CategoryScores, computeCategoryScores } from "./categories.js";
+import * as normalize from "./normalize.js";
+import { OverallResult, BreakdownItem, computeOverall } from "./overall.js";
+import { Tier } from "./tier.js";
+import { Position, assignPosition, detectTechProfile } from "./position.js";
+import { Attributes, computeAttributes } from "./attributes.js";
+import { Insights, generateInsights } from "./insights.js";
 
 export interface PlayerResult {
   username: string;

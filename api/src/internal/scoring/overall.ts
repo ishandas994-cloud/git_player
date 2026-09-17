@@ -1,4 +1,5 @@
-import { CategoryScores } from "./categories";
+import { CategoryScores } from "./categories.js";
+import * as normalize from "./normalize.js";
 
 export interface BreakdownItem {
   category: string;
@@ -11,8 +12,6 @@ export interface OverallResult {
   ovr: number;
   breakdown: BreakdownItem[];
 }
-
-import * as normalize from "./normalize";
 
 export function computeOverall(c: CategoryScores, w: { Activity: number; Projects: number; OpenSource: number; Popularity: number; Consistency: number; Technical: number }): OverallResult {
   const items: BreakdownItem[] = [

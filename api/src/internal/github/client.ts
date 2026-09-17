@@ -1,9 +1,9 @@
-import type { ContributionsCollection, Profile, Repo, GitHubEvent } from './types'
-import { emptyContributions } from './types'
+import type { ContributionsCollection, Profile, Repo, GitHubEvent } from './types.js'
+import { emptyContributions } from './types.js'
 
 const REST_BASE_URL = 'https://api.github.com'
 const GRAPHQL_URL = 'https://api.github.com/graphql'
-const DEFAULT_TIMEOUT_MS = 8000
+const DEFAULT_TIMEOUT_MS = 30000
 
 export class NotFoundError extends Error {
   constructor() {

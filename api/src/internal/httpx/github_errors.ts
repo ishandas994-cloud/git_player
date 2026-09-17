@@ -1,6 +1,6 @@
 import { Response } from "express";
-import { NotFoundError, RateLimitedError } from "../github/client";
-import { error as sendError } from "./respond";
+import { NotFoundError, RateLimitedError } from "../github/client.js";
+import { error as sendError } from "./respond.js";
 
 export const UsernameRe = /^[a-zA-Z0-9]([a-zA-Z0-9]|-[a-zA-Z0-9]){0,38}$/;
 

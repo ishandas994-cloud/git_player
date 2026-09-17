@@ -1,0 +1,1 @@
+{"query":"query($login: String!) { user(login: $login) { contributionsCollection { totalCommitContributions totalIssueContributions totalPullRequestContributions totalPullRequestReviewContributions totalRepositoriesWithContributedCommits contributionCalendar { totalContributions weeks { contributionDays { contributionCount date } } } } } }","variables":{"login":"torvalds"}}

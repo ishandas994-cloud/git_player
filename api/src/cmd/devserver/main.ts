@@ -1,8 +1,8 @@
 import "dotenv/config";
 import express from "express";
-import { handler as healthHandler } from "../../health";
-import { handler as playerHandler } from "../../player";
-import { handler as compareHandler } from "../../compare";
+import { handler as healthHandler } from "../../health.js";
+import { handler as playerHandler } from "../../player.js";
+import { handler as compareHandler } from "../../compare.js";
 
 const app = express();
 
@@ -33,7 +33,7 @@ app.use((req, res) => {
 
 const rawAddr = process.env.ADDR || ":4000";
 const port = parseInt(rawAddr.replace(":", ""), 10) || 4000;
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   const token = process.env.GITHUB_TOKEN;
   console.log("dev server listening on", rawAddr);
   console.log("GITHUB_TOKEN:", token ? "loaded (" + token.slice(0, 6) + "...)" : "MISSING - rate limits will apply!");

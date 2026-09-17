@@ -1,5 +1,5 @@
-import * as normalize from "./normalize";
-import { CategoryScores } from "./categories";
+import * as normalize from "./normalize.js";
+import { CategoryScores } from "./categories.js";
 
 export interface AttributeMix {
   Activity?: number;

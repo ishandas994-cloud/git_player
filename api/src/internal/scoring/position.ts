@@ -1,6 +1,6 @@
-import * as normalize from "./normalize";
-import { Metrics } from "./metrics";
-import { CategoryScores } from "./categories";
+import * as normalize from "./normalize.js";
+import { Metrics } from "./metrics.js";
+import { CategoryScores } from "./categories.js";
 
 export interface TechProfile {
   Frontend: number;

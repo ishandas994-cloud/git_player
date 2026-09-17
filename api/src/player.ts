@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { handlePreflight, error, json } from "./internal/httpx/respond";
-import { UsernameRe, writeGitHubError } from "./internal/httpx/github_errors";
-import { Shared, playerKey } from "./internal/cache/cache";
-import { GitHubClient } from "./internal/github/client";
-import { fetchSnapshot } from "./internal/github/fetch";
-import { buildPlayerResult, PlayerResult } from "./internal/scoring/result";
+import { handlePreflight, error, json } from "./internal/httpx/respond.js";
+import { UsernameRe, writeGitHubError } from "./internal/httpx/github_errors.js";
+import { Shared, playerKey } from "./internal/cache/cache.js";
+import { GitHubClient } from "./internal/github/client.js";
+import { fetchSnapshot } from "./internal/github/fetch.js";
+import { buildPlayerResult, PlayerResult } from "./internal/scoring/result.js";
 
 export async function handler(req: Request, res: Response): Promise<void> {
   if (handlePreflight(req, res)) return;
@@ -30,12 +30,16 @@ export async function handler(req: Request, res: Response): Promise<void> {
   }
 
   try {
+    console.log(`[player] Fetching profile for ${username}`);
     const client = new GitHubClient();
+    console.log(`[player] Fetching snapshot for ${username}`);
     const snap = await fetchSnapshot(client, username);
+    console.log(`[player] Building result for ${username}`);
     const result = buildPlayerResult(snap);
     Shared.set(playerKey(username), result);
     json(res, 200, result);
   } catch (err) {
+    console.error(`[player] Error for ${username}:`, err);
     writeGitHubError(res, err as Error, username);
   }
 }

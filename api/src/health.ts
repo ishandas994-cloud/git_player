@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { handlePreflight, json } from "./internal/httpx/respond";
+import { handlePreflight, json } from "./internal/httpx/respond.js";
 
 export async function handler(req: Request, res: Response): Promise<void> {
   if (handlePreflight(req, res)) return;

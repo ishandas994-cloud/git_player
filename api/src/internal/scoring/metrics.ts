@@ -1,5 +1,5 @@
-import { Snapshot } from "../github/types";
-import * as normalize from "./normalize";
+import { Snapshot } from "../github/types.js";
+import * as normalize from "./normalize.js";
 
 export interface Metrics {
   accountAgeDays: number;
@@ -145,7 +145,7 @@ export function computeMetrics(snap: Snapshot): Metrics {
     switch (e.type) {
       case "PushEvent":
         m.recentPushes++;
-        m.recentCommits += e.payload.commits.length;
+        m.recentCommits += e.payload.commits?.length || 0;
         break;
       case "PullRequestEvent":
         m.recentPRsOpened++;

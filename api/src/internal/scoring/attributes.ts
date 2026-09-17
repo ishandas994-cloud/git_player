@@ -1,4 +1,4 @@
-import * as normalize from "./normalize";
+import * as normalize from "./normalize.js";
 
 interface AttributeMix {
   Activity?: number;

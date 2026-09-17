@@ -1,7 +1,7 @@
 import express from "express";
-import { handler as healthHandler } from "./health";
-import { handler as playerHandler } from "./player";
-import { handler as compareHandler } from "./compare";
+import { handler as healthHandler } from "./health.js";
+import { handler as playerHandler } from "./player.js";
+import { handler as compareHandler } from "./compare.js";
 import type { Request, Response } from "express";
 
 const app = express();
