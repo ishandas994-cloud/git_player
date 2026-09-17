@@ -7,6 +7,14 @@
       "maxDuration": 15
     }
   },
+  "excludes": [
+    "api/src/**",
+    "api/dist/**",
+    "api/test-*.ts",
+    "api/test-*.mjs",
+    "api/*.ts",
+    "api/cmd/**"
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
