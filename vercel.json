@@ -1,9 +1,10 @@
 {
-  "buildCommand": "cd frontend && npm install && npm run build",
+  "buildCommand": "cd api && npm install && npm run build && cd ../frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
   "installCommand": "echo skip-root-install",
   "functions": {
     "api/index.ts": {
+      "runtime": "nodejs20.x",
       "memory": 512,
       "maxDuration": 15
     }
