@@ -57,6 +57,7 @@ export default function PlayerCard({ player, size = 'default' }: Props) {
             <img
               src={player.avatarUrl}
               alt={player.username}
+              crossOrigin="anonymous"
               className="w-28 h-28 rounded-full object-cover border-2 border-white/10"
             />
           </div>
