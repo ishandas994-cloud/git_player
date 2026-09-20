@@ -1,0 +1,23 @@
+{
+  "name": "github-player-rating",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:api": "tsx watch server/src/cmd/devserver/main.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "cd frontend && npm install && npm run build"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.15",
+    "@vercel/node": "^3.2.24",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}

@@ -1,23 +1,16 @@
 {
-  "buildCommand": "cd api && npm install && npm run build && cd ../frontend && npm install && npm run build",
+  "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
-  "installCommand": "echo skip-root-install",
+  "installCommand": "npm install",
   "functions": {
-    "api/index.mjs": {
-      "maxDuration": 15
+    "api/*.ts": {
+      "maxDuration": 15,
+      "memory": 512
     }
   },
-  "excludes": [
-    "api/src/**",
-    "api/dist/**",
-    "api/test-*.ts",
-    "api/test-*.mjs",
-    "api/*.ts",
-    "api/cmd/**"
-  ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ]

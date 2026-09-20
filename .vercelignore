@@ -1,0 +1,22 @@
+# Keep these out of the deployment entirely.
+# Anything under /api becomes a serverless function, and the Hobby plan caps a
+# deployment at 12 — so stray .ts/.js/.mjs files must never land there.
+tests/
+**/__tests__/
+**/*.test.ts
+**/*.spec.ts
+
+# Build artifacts and local junk
+node_modules/
+dist/
+**/*.tsbuildinfo
+*.exe
+*.log
+
+# Local env files — secrets come from Vercel's Environment Variables UI instead
+.env
+.env.local
+
+# Scratch files
+graphql_test*.json
+*.png

@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { ApiRequest, ApiResponse } from "./internal/httpx/types.js";
 import { handlePreflight, error, json } from "./internal/httpx/respond.js";
 import { UsernameRe, writeGitHubError } from "./internal/httpx/github_errors.js";
 import { Shared, playerKey } from "./internal/cache/cache.js";
@@ -6,7 +6,7 @@ import { GitHubClient } from "./internal/github/client.js";
 import { fetchSnapshot } from "./internal/github/fetch.js";
 import { buildPlayerResult, PlayerResult } from "./internal/scoring/result.js";
 
-export async function handler(req: Request, res: Response): Promise<void> {
+export async function handler(req: ApiRequest, res: ApiResponse): Promise<void> {
   if (handlePreflight(req, res)) return;
   if (req.method !== "GET") {
     error(res, 405, "method_not_allowed", "use GET");

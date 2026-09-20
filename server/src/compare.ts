@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
+import type { ApiRequest, ApiResponse } from "./internal/httpx/types.js";
 import { handlePreflight, error, json } from "./internal/httpx/respond.js";
-import { UsernameRe } from "./internal/httpx/github_errors.js";
+import { UsernameRe, writeGitHubError } from "./internal/httpx/github_errors.js";
 import { Shared, playerKey } from "./internal/cache/cache.js";
 import { GitHubClient } from "./internal/github/client.js";
 import { fetchSnapshot } from "./internal/github/fetch.js";
@@ -15,7 +15,7 @@ export interface CompareResult {
   summary: string;
 }
 
-export async function handler(req: Request, res: Response): Promise<void> {
+export async function handler(req: ApiRequest, res: ApiResponse): Promise<void> {
   if (handlePreflight(req, res)) return;
   if (req.method !== "GET") {
     error(res, 405, "method_not_allowed", "use GET");
@@ -121,12 +121,3 @@ export function buildSummary(nameA: string, nameB: string, aWins: number, bWins:
   }
 }
 
-function writeGitHubError(res: Response, err: Error, username: string): void {
-  if (err instanceof Error && err.name === "NotFoundError") {
-    error(res, 404, "user_not_found", `no GitHub user found for "${username}"`);
-  } else if (err instanceof Error && err.name === "RateLimitedError") {
-    error(res, 429, "rate_limited", "GitHub API rate limit reached, please try again shortly");
-  } else {
-    error(res, 502, "github_api_error", "couldn't reach GitHub right now, please try again");
-  }
-}
