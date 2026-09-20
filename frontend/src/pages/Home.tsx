@@ -78,14 +78,18 @@ export default function Home() {
                 value={compareA}
                 onChange={(e) => setCompareA(e.target.value)}
                 placeholder="userA"
-                className="bg-surface border border-line rounded px-2.5 py-1.5 font-mono text-xs w-28 outline-none focus:border-signal"
+                autoComplete="off"
+                spellCheck={false}
+                className="bg-surface border border-line rounded px-2.5 py-1.5 font-mono text-xs w-28 outline-none text-ink_text placeholder:text-muted/60 caret-signal focus:border-signal"
               />
               <span className="text-muted">vs</span>
               <input
                 value={compareB}
                 onChange={(e) => setCompareB(e.target.value)}
                 placeholder="userB"
-                className="bg-surface border border-line rounded px-2.5 py-1.5 font-mono text-xs w-28 outline-none focus:border-signal"
+                autoComplete="off"
+                spellCheck={false}
+                className="bg-surface border border-line rounded px-2.5 py-1.5 font-mono text-xs w-28 outline-none text-ink_text placeholder:text-muted/60 caret-signal focus:border-signal"
               />
               <button
                 type="submit"
