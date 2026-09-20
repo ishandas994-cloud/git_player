@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { AlertTriangle } from 'lucide-react'
 import { fetchPlayer, ApiError } from '../api/client'
@@ -13,6 +13,7 @@ import TopRepos from '../components/TopRepos'
 import Insights from '../components/Insights'
 import Disclaimer from '../components/Disclaimer'
 import SearchBar from '../components/SearchBar'
+import ShareCard from '../components/ShareCard'
 
 export default function PlayerPage() {
   const { username } = useParams<{ username: string }>()
@@ -20,6 +21,7 @@ export default function PlayerPage() {
   const [player, setPlayer] = useState<PlayerResult | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!username) return
@@ -63,8 +65,11 @@ export default function PlayerPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 space-y-8">
       <div className="flex flex-col lg:flex-row gap-8">
-        <div className="flex justify-center lg:block">
-          <PlayerCard player={player} />
+        <div className="flex flex-col items-center lg:items-stretch gap-4">
+          <div ref={cardRef} className="inline-block">
+            <PlayerCard player={player} />
+          </div>
+          <ShareCard player={player} cardRef={cardRef} />
         </div>
 
         <div className="flex-1 space-y-4">
